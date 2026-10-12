@@ -19,7 +19,7 @@ spec:
         env:
         - name: GITLAB_OMNIBUS_CONFIG
           value: |
-            external_url 'http://gitlab.127.0.0.1.nip.io'
+            external_url 'http://localhost:8088'
             nginx['listen_port'] = 8088
             nginx['listen_https'] = false
             gitlab_kas['enable'] = false
