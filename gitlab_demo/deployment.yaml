@@ -20,7 +20,7 @@ spec:
         - name: GITLAB_OMNIBUS_CONFIG
           value: |
             external_url 'http://gitlab.127.0.0.1.nip.io'
-            nginx['listen_port'] = 80
+            nginx['listen_port'] = 8088
             nginx['listen_https'] = false
             gitlab_kas['enable'] = false
             puma['worker_processes'] = 0
@@ -29,7 +29,7 @@ spec:
             prometheus_monitoring['enable'] = false
             gitlab_rails['usage_ping_enabled'] = false
         ports:
-        - containerPort: 80
+        - containerPort: 8088
         resources:
           requests:
             cpu: "1"
