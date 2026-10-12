@@ -28,13 +28,15 @@ spec:
             postgresql['shared_buffers'] = "128MB"
             prometheus_monitoring['enable'] = false
             gitlab_rails['usage_ping_enabled'] = false
+            gitaly['configuration'] = { concurrency: [] }
+            gitlab_rails['env'] = { 'MALLOC_CONF' => 'dirty_decay_ms:1000,muzzy_decay_ms:1000' }
         ports:
         - containerPort: 8088
         resources:
           requests:
             cpu: "1"
-            memory: 2500Mi
-            ephemeral-storage: 3Gi
+            memory: 4Gi
+            ephemeral-storage: 6Gi
           limits:
-            memory: 3Gi
+            memory: 5Gi
             ephemeral-storage: 8Gi
