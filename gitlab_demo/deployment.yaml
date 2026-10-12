@@ -30,39 +30,7 @@ spec:
         - containerPort: 80
         resources:
           requests:
-            memory: "3Gi"
-            cpu: "1"
-          limits:
             memory: "4Gi"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: gitlab-svc
-  namespace: gitlab
-spec:
-  selector:
-    app: gitlab
-  ports:
-  - port: 80
-    targetPort: 80
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: gitlab-ingress
-  namespace: gitlab
-  annotations:
-    kubernetes.io/ingress.class: traefik
-spec:
-  rules:
-  - host: gitlab.127.0.0.1.nip.io
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: gitlab-svc
-            port:
-              number: 80
+            cpu: "2"
+          limits:
+            memory: "5Gi"
