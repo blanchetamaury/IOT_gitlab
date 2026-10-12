@@ -9,7 +9,7 @@ spec:
     matchLabels:
       app: gitlab
   template:
-    metadata:
+    metadata: 
       labels:
         app: gitlab
     spec:
@@ -24,15 +24,17 @@ spec:
             nginx['listen_https'] = false
             gitlab_kas['enable'] = false
             puma['worker_processes'] = 0
-            sidekiq['max_concurrency'] = 5
+            sidekiq['concurrency'] = 5
             postgresql['shared_buffers'] = "128MB"
+            prometheus_monitoring['enable'] = false
+            gitlab_rails['usage_ping_enabled'] = false
         ports:
         - containerPort: 80
         resources:
           requests:
-            memory: "4Gi"
-            ephemeral-storage: "3Gi"
-            cpu: "2"
+            cpu: "1"
+            memory: 2500Mi
+            ephemeral-storage: 3Gi
           limits:
-            memory: "5Gi"
-            ephemeral-storage: "4Gi"
+            memory: 3Gi
+            ephemeral-storage: 8Gi
