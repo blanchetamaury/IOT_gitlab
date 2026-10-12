@@ -23,14 +23,17 @@ spec:
             nginx['listen_port'] = 80
             nginx['listen_https'] = false
             gitlab_kas['enable'] = false
+            puma['worker_processes'] = 0
+            sidekiq['max_concurrency'] = 5
+            postgresql['shared_buffers'] = "128MB"
         ports:
         - containerPort: 80
         resources:
           requests:
-            memory: "4Gi"
-            cpu: "2"
+            memory: "3Gi"
+            cpu: "1"
           limits:
-            memory: "5Gi"
+            memory: "4Gi"
 ---
 apiVersion: v1
 kind: Service
